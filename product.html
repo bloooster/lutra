@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лютра - Товар</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="3styles.css">
+</head>
+<body>
+    <div class="site-wrapper">
+       <!-- ШАПКА -->
+        <header class="header">
+            <div class="container header__container">
+                <div class="header__logo">
+                    <img src="images/lutyra-logo.png" alt="Лютра" class="header__logo-img">
+                    <span class="header__logo-text">Лютра</span>
+                </div>
+                
+                <nav class="header__nav">
+                    <a href="index.html" class="header__nav-link">Главная</a>
+                    <a href="catalog.html" class="header__nav-link">Каталог</a>
+                    <a href="#" class="header__nav-link">Доставка</a>
+                    <a href="#" class="header__nav-link">Поддержка</a>
+                </nav>
+                
+                <div class="header__actions">
+                    <a href="cart.html" class="header__cart" aria-label="Корзина">
+                        <img src="images/cart.png" alt="">
+                    </a>
+                    <button class="header__profile" aria-label="Личный кабинет">
+                        <img src="images/profile.png" alt="">
+                    </button>
+                </div>
+            </div>
+        </header>
+
+       <!-- ОСНОВНОЙ КОНТЕНТ -->
+<main class="main-content">
+    <div class="container">
+        <!-- ИЗМЕНЕНИЯ НАЧАЛО -->
+        <div class="product-header">
+            <a href="catalog.html" class="back-arrow">
+                <img src="images/стрелка.jpg" alt="Назад" class="back-arrow__img">
+            </a>
+            <div class="product-info">
+                <h1 class="product-title">КЕРАМИЧЕСКАЯ ТАРЕЛКА "СЛАДКИЙ ИНЖИР"</h1>
+                <p class="product-details">| Авторская керамика | Ручная роспись |</p>
+            </div>
+        </div>
+
+     <!-- КОНТЕЙНЕР С КАРТИНКОЙ И ТЕКСТОМ В ОДНУ ЛИНИЮ -->
+<div class="product-layout">
+    <div class="product-left-column">
+        <div class="product-image-container">
+            <img src="images/product1.jpg" alt="Керамическая тарелка Сладкий инжир" class="product-main-image">
+        </div>
+        <!-- КНОПКА "В КОРЗИНУ" ПОД КАРТИНКОЙ -->
+        <div class="cart-button-container">
+            <button class="cart-button">В корзину</button>
+        </div>
+    </div>
+    <div class="product-description-container">
+        <div class="product-description">
+            <h2 class="description-title">ОПИСАНИЕ:</h2>
+            <p class="description-text">Эта тарелка — больше, чем просто посуда. Это маленькая история, запечатлённая в глине. Авторская роспись вдохновлена теплом средиземноморского солнца и дарами щедрого сада. Инжир, символ изобилия и мудрости, привнесёт в ваш дом уют и природную гармонию. Каждый плод выписан вручную, что делает это изделие уникальным. Тарелка станет изюминкой вашего стола, создаст уютное настроение на кухне или послужит изысканным самостоятельным декором. Прекрасный подарок для ценителей ручной работы и натуральной эстетики.</p>
+            
+            <h2 class="description-title">ВАМ ПОНРАВИТСЯ:</h2>
+            <p class="description-text">• Эксклюзивность: Каждый мазок — авторский, вы получаете изделие в единственном экземпляре.<br>
+            • Эстетика: Тёплая, «вкусная» палитра украсит любой стол и интерьер.<br>
+            • Эмоция: Дарит ощущение натуральности, спокойствия и связи с природой.</p>
+        </div>
+    </div>
+</div>
+
+<!-- КОНТЕЙНЕР С ЗАГОЛОВКОМ "ВАЖНЫЕ ХАРАКТЕРИСТИКИ" -->
+<div class="characteristics-header">
+    <h2 class="characteristics-title">ВАЖНЫЕ ХАРАКТЕРИСТИКИ:</h2>
+</div>
+
+<!-- КОНТЕЙНЕР С ТЕКСТОМ ХАРАКТЕРИСТИК -->
+<div class="characteristics-content">
+    <ul class="characteristics-list">
+        <li>Материал: белая глина, безопасные глазури и краски.</li>
+        <li>Техника: ручная лепка, подглазурная роспись.</li>
+        <li>Размер: диаметр Ø26 см.</li>
+        <li>Назначение: для сервировки (фрукты, десерты, закуски) или как декоративный элемент.</li>
+        <li>Особенности: нельзя использовать в микроволновой печи и посудомоечной машине из-за наличия золочёных элементов.</li>
+    </ul>
+</div>
+
+<!-- БЛОК С ДВУМЯ КНОПКАМИ -->
+<div class="buttons-block">
+    <button class="btn-reviews">ОТЗЫВЫ</button>
+    <button class="btn-questions">ВОПРОСЫ</button>
+</div>
+</main>
+
+<script src="cart-system.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const cartButton = document.querySelector('.cart-button');
+        
+        if (cartButton) {
+            cartButton.addEventListener('click', function() {
+                // Данные товара с page.html
+                const product = {
+                    id: 1,
+                    title: 'КЕРАМИЧЕСКАЯ ТАРЕЛКА "СЛАДКИЙ ИНЖИР"',
+                    price: 4500,
+                    image: 'images/product1.jpg',
+                    description: 'Авторская керамика с ручной росписью'
+                };
+                
+                addToCart(product);
+                
+                // Эффект мигания при добавлении
+                const badge = document.querySelector('.cart-badge');
+                if (badge) {
+                    badge.style.transform = 'scale(1.3)';
+                    setTimeout(() => {
+                        badge.style.transform = 'scale(1)';
+                    }, 200);
+                }
+            });
+        }
+        
+        // Обновляем бейдж при загрузке
+        updateCartBadge();
+    });
+    
+    // Обновляем бейдж при загрузке страницы
+    window.addEventListener('load', function() {
+        updateCartBadge();
+    });
+</script>
+
+<!-- МОДАЛЬНОЕ ОКНО С ОТЗЫВАМИ -->
+<div id="reviewsModal" class="modal">
+    <div class="modal-content">
+        <span class="modal-close">&times;</span>
+        <h2 class="modal-title">ОТЗЫВЫ НАШИХ ПОКУПАТЕЛЕЙ</h2>
+        
+        <div class="reviews-list">
+            <div class="review-item">
+                <div class="review-author">Екатерина С.</div>
+                <div class="review-text">Потрясающая тарелка! Качество исполнения на высшем уровне. Роспись очень нежная и аккуратная. Теперь это моё любимое блюдце для завтрака. Обязательно закажу ещё что-нибудь у этого мастера!</div>
+                <div class="review-date">15 марта 2025</div>
+            </div>
+            
+            <div class="review-item">
+                <div class="review-author">Алексей К.</div>
+                <div class="review-text">Покупал в подарок девушке — она в восторге! Говорит, что такой красивой посуды у неё ещё не было. Спасибо за ручную работу, чувствуется душевное тепло.</div>
+                <div class="review-date">02 апреля 2025</div>
+            </div>
+            
+            <div class="review-item">
+                <div class="review-author">Марина В.</div>
+                <div class="review-text">Очень довольна покупкой! Тарелка полностью ручная, что видно по деталям. Рисунок яркий, глазурь блестит. Использую как декоративное украшение на кухне — создаёт уютную атмосферу.</div>
+                <div class="review-date">20 февраля 2025</div>
+            </div>
+            
+            <div class="review-item">
+                <div class="review-author">Дмитрий П.</div>
+                <div class="review-text">Качественная керамика, приятная на ощупь. Роспись не смывается и не выцветает. Уже несколько месяцев пользуюсь каждый день — как новая. Рекомендую!</div>
+                <div class="review-date">10 января 2025</div>
+            </div>
+            
+            <div class="review-item">
+                <div class="review-author">Анна М.</div>
+                <div class="review-text">Прекрасный подарок для ценителей handmade. Упаковали очень надёжно, доставили без повреждений. Сама тарелка — произведение искусства!</div>
+                <div class="review-date">25 марта 2025</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Модальное окно для отзывов
+    const modal = document.getElementById('reviewsModal');
+    const btnReviews = document.querySelector('.btn-reviews');
+    const closeBtn = document.querySelector('.modal-close');
+    
+    if (btnReviews) {
+        btnReviews.addEventListener('click', function() {
+            modal.style.display = 'flex';
+        });
+    }
+    
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+    }
+    
+    // Закрытие при клике вне окна
+    window.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+</script>
+
+<!-- МОДАЛЬНОЕ ОКНО С ВОПРОСАМИ И ОТВЕТАМИ -->
+<div id="faqModal" class="modal">
+    <div class="modal-content modal-faq">
+        <span class="modal-close-faq">&times;</span>
+        <h2 class="modal-title">ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ</h2>
+        
+        <div class="faq-list">
+            <div class="faq-item">
+                <div class="faq-question">❓ Можно ли мыть тарелку в посудомоечной машине?</div>
+                <div class="faq-answer">Нет, данное изделие нельзя мыть в посудомоечной машине из-за наличия золочёных элементов и ручной росписи. Рекомендуем мягкую ручную мойку тёплой водой с мягким моющим средством.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">❓ Подходит ли тарелка для использования в микроволновой печи?</div>
+                <div class="faq-answer">Нет, изделие нельзя использовать в микроволновой печи из-за наличия металлизированной позолоты. Для разогрева используйте другую посуду.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">❓ Из какого материала сделана тарелка?</div>
+                <div class="faq-answer">Тарелка изготовлена из высококачественной белой глины. Используются только безопасные глазури и краски, прошедшие обжиг при высоких температурах.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">❓ Является ли роспись действительно ручной работой?</div>
+                <div class="faq-answer">Да, каждый элемент росписи выполнен вручную профессиональным художником-керамистом. Именно поэтому каждое изделие уникально и имеет свои небольшие особенности.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">❓ Как долго изготавливается заказ?</div>
+                <div class="faq-answer">При наличии товара на складе — отправка в течение 1-2 дней. Если товар изготавливается на заказ, срок производства составляет 7-14 дней. Точные сроки можно уточнить у менеджера.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">❓ Какие способы оплаты доступны?</div>
+                <div class="faq-answer">Мы принимаем оплату банковскими картами (Visa, MasterCard, МИР), через СБП, а также наличными при самовывозе.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">❓ Есть ли доставка в другие города?</div>
+                <div class="faq-answer">Да, мы осуществляем доставку по всей России через СДЭК и Почту России. Стоимость и сроки доставки рассчитываются индивидуально при оформлении заказа.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">❓ Можно ли вернуть товар, если он не подошёл?</div>
+                <div class="faq-answer">Да, вы можете вернуть товар в течение 14 дней с момента получения при условии сохранения товарного вида и упаковки. Изделия ручной работы возврату не подлежат только в случае обнаружения брака.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">❓ Как ухаживать за керамикой, чтобы она долго радовала?</div>
+                <div class="faq-answer">Избегайте резких перепадов температур, не используйте абразивные чистящие средства. Мойте мягкой губкой с мыльным раствором, вытирайте насухо мягким полотенцем.</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">❓ Безопасна ли посуда для здоровья?</div>
+                <div class="faq-answer">Абсолютно безопасна! Все материалы сертифицированы и предназначены для контакта с пищевыми продуктами. Краски и глазури не выделяют вредных веществ даже при нагревании (до рекомендованной температуры).</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Модальное окно для ВОПРОСОВ
+    const faqModal = document.getElementById('faqModal');
+    const btnQuestions = document.querySelector('.btn-questions');
+    const closeFaqBtn = document.querySelector('.modal-close-faq');
+    
+    if (btnQuestions) {
+        btnQuestions.addEventListener('click', function() {
+            faqModal.style.display = 'flex';
+        });
+    }
+    
+    if (closeFaqBtn) {
+        closeFaqBtn.addEventListener('click', function() {
+            faqModal.style.display = 'none';
+        });
+    }
+    
+    // Закрытие FAQ при клике вне окна
+    window.addEventListener('click', function(event) {
+        if (event.target === faqModal) {
+            faqModal.style.display = 'none';
+        }
+    });
+</script>
+
+<script>
+    // Раскрытие/скрытие ответов в FAQ
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', function() {
+            const answer = this.nextElementSibling;
+            answer.classList.toggle('show');
+        });
+    });
+</script>
+
+</body>
+
+<!-- ПОДВАЛ (как на index) -->
+ <footer class="footer">
+    <div class="container footer__container">
+        <div class="footer__logo">
+            <img src="images/logo2.png" alt="Логотип">
+        </div>
+        <div class="footer__info">
+            2026<br>Анна Плотникова, Любовь Серикова
+        </div>
+    </div>
+</footer>
